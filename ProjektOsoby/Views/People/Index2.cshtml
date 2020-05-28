@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ProjektOsoby.Models.Person>
+@{
+    ViewBag.Title = "Lista zaginionych";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Utwórz", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Imię")
+        </th>
+        <th>
+            @Html.DisplayName("Nazwisko")
+        </th>
+
+        <th>
+            @Html.DisplayName("Opis")
+        </th>
+        <th>
+
+            @Html.ActionLink("Płeć", "Index", new { sortOrder = ViewBag.S })
+        </th>
+        <th>
+            @Html.ActionLink("Data dodania", "Index", new { sortOrder = ViewBag.D })
+        </th>
+        <th>
+            @Html.DisplayName("Aktualne")
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Added)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActual)
+            </td>
+            <td>
+
+                <img src="~/Images/@item.Image" alt="" height="100px" width="100px" />
+
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

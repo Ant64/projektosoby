@@ -1,0 +1,79 @@
+﻿@model ProjektOsoby.Models.Person
+
+@{
+    ViewBag.Title = "Usuwanie osoby zaginonej";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Czy chcesz usunąć?</h3>
+<div>
+    <h4>Person</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Imię")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Nazwisko")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Opis")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Płeć")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Data dodania")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Added)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Aktualne")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActual)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Lista zaginionych", "Index2")
+        </div>
+    }
+</div>
